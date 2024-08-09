@@ -47,16 +47,37 @@ public class GameManager : MonoBehaviour
         {
             if (selectedPrefab != null)
             {
-                if ((selectedPrefab == bluePrefabs[0] || selectedPrefab == bluePrefabs[1] || selectedPrefab == bluePrefabs[2]) && blueCoin >= 50)
+                if ((selectedPrefab == bluePrefabs[0] && blueCoin >= 50))
                 {
                     PlacePrefab();
                     blueCoin -= 50;
                 }
-                else if ((selectedPrefab == redPrefabs[0] || selectedPrefab == redPrefabs[1] || selectedPrefab == redPrefabs[2]) && redCoin >= 50)
+                else if ((selectedPrefab == bluePrefabs[1] && blueCoin >= 100))
+                {
+                    PlacePrefab();
+                    blueCoin -= 100;
+                }
+                else if ((selectedPrefab == bluePrefabs[2] && blueCoin >= 75))
+                {
+                    PlacePrefab();
+                    blueCoin -= 75;
+                }
+                else if ((selectedPrefab == redPrefabs[0]  && blueCoin >= 50))
                 {
                     PlacePrefab();
                     redCoin -= 50;
                 }
+                else if ((selectedPrefab == redPrefabs[1] && blueCoin >= 100))
+                {
+                    PlacePrefab();
+                    redCoin -= 100;
+                }
+                else if ((selectedPrefab == redPrefabs[2] && blueCoin >= 75))
+                {
+                    PlacePrefab();
+                    redCoin -= 75;
+                }
+
             }
         }
 
@@ -84,7 +105,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("PlacePrefab çağrıldı!"); // Test amacıyla ekleyin
 
         Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = 10f; // Kamera ile uzaklık
+        mousePosition.z = 15f; // Kamera ile uzaklık
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
         if (selectedPrefab != null)
